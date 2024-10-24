@@ -1,3 +1,37 @@
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    
+    // Agar raqam bo'lsa
+    if (!isNaN(key)) {
+        appendNumber(key);
+    }
+
+    // Agar operator bo'lsa
+    if (['+', '-', '*', '/'].includes(key)) {
+        appendOperator(key);
+    }
+
+    // Enter tugmasi "=" funktsiyasini bajaradi
+    if (key === 'Enter') {
+        calculate();
+    }
+
+    // Backspace "DEL" funktsiyasini bajaradi
+    if (key === 'Backspace') {
+        deleteLast();
+    }
+
+    // C yoki Escape tugmasi "clear" funktsiyasini bajaradi
+    if (key === 'Escape' || key.toLowerCase() === 'c') {
+        clearDisplay();
+    }
+
+    // Nuqta (.) qo'shish
+    if (key === '.') {
+        appendNumber('.');
+    }
+});
+
 function clearDisplay() {
     document.getElementById("display").value = "";
 }
